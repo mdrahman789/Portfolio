@@ -1,0 +1,59 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/dm-serif-display/400.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --color-bg: #f8f7f5;
+    --color-bg-elevated: #ffffff;
+    --color-border: rgba(30, 41, 59, 0.1);
+    --color-muted: #64748b;
+    --color-foreground: #1e293b;
+  }
+
+  .dark {
+    --color-bg: #0f172a;
+    --color-bg-elevated: #1e293b;
+    --color-border: rgba(248, 250, 252, 0.1);
+    --color-muted: #94a3b8;
+    --color-foreground: #f8fafc;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    @apply scroll-smooth;
+    position: relative;
+  }
+
+  body {
+    @apply antialiased;
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-foreground);
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-400/50 dark:focus-visible:ring-slate-500/50;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
