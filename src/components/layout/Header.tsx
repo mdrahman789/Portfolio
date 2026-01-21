@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './ThemeToggle'
+import { CommandSearchBar } from './CommandSearchBar'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
@@ -68,6 +69,7 @@ export function Header() {
                 )
               })}
             </div>
+            <CommandSearchBar variant="compact" />
             <ThemeToggle />
           </div>
         </div>

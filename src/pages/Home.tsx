@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/Button'
 import { Section } from '@/components/ui/Section'
 import { Card } from '@/components/ui/Card'
 import { Chip } from '@/components/ui/Chip'
+import { CommandSearchBar } from '@/components/layout/CommandSearchBar'
 import { ScrollReveal, StaggerContainer } from '@/components/motion/ScrollReveal'
 import { Parallax } from '@/components/motion/Parallax'
 
@@ -27,6 +28,9 @@ export function Home() {
                 <Button as="link" to="/contact" variant="secondary">
                   {siteData.home.hero.ctaContact}
                 </Button>
+              </div>
+              <div className="mt-6 max-w-md">
+                <CommandSearchBar variant="hero" />
               </div>
             </ScrollReveal>
           </Parallax>

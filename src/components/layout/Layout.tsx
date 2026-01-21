@@ -5,6 +5,7 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import { ScrollProgress } from './ScrollProgress'
 import { CommandPalette } from './CommandPalette'
+import { CommandPaletteProvider } from '@/contexts/CommandPaletteContext'
 import { initTheme } from '@/lib/theme'
 
 export function Layout() {
@@ -28,15 +29,19 @@ export function Layout() {
 
   return (
     <HelmetProvider>
-      <div className="relative z-10 min-h-screen bg-[var(--color-bg)] text-slate-800 dark:text-slate-100 transition-colors">
-        <ScrollProgress />
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-        <CommandPalette open={commandPaletteOpen} onOpenChange={setCommandPaletteOpen} />
-      </div>
+      <CommandPaletteProvider
+        value={{ open: commandPaletteOpen, setOpen: setCommandPaletteOpen }}
+      >
+        <div className="relative z-10 min-h-screen bg-[var(--color-bg)] text-slate-800 dark:text-slate-100 transition-colors">
+          <ScrollProgress />
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+          <Footer />
+          <CommandPalette open={commandPaletteOpen} onOpenChange={setCommandPaletteOpen} />
+        </div>
+      </CommandPaletteProvider>
     </HelmetProvider>
   )
 }
