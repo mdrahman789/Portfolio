@@ -8,6 +8,9 @@ import { CommandSearchBar } from '@/components/layout/CommandSearchBar'
 import { ScrollReveal, StaggerContainer } from '@/components/motion/ScrollReveal'
 import { Parallax } from '@/components/motion/Parallax'
 
+const heroHeadline = "I build small things that make a big difference."
+const heroText = "I enjoy turning ideas into something you can actually click and use. I'm not chasing perfection, but I do care about doing things with intention. The small details matter to me because they're usually what makes something feel comfortable and human."
+
 export function Home() {
   return (
     <div>
@@ -16,10 +19,10 @@ export function Home() {
           <Parallax speed={0.3}>
             <ScrollReveal>
               <h1 className="font-display text-display-xl md:text-display-2xl font-bold mb-6 text-slate-900 dark:text-white tracking-tight">
-                {siteData.profile.name}
+                {heroHeadline}
               </h1>
               <p className="text-body-lg md:text-display-sm text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-xl">
-                {siteData.home.hero.introduction}
+                {heroText}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button as="link" to="/projects" variant="primary">
