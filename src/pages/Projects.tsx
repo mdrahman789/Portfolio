@@ -1,4 +1,3 @@
-import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { siteData } from '@/content/siteData'
 import { Section } from '@/components/ui/Section'
@@ -8,21 +7,6 @@ import { ScrollReveal, StaggerContainer } from '@/components/motion/ScrollReveal
 import { motion, AnimatePresence } from 'framer-motion'
 
 export function Projects() {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null)
-
-  const allTags = useMemo(() => {
-    const tags = new Set<string>()
-    siteData.projects.forEach((project) => {
-      project.tags.forEach((tag) => tags.add(tag))
-    })
-    return Array.from(tags).sort()
-  }, [])
-
-  const filteredProjects = useMemo(() => {
-    if (!selectedTag) return siteData.projects
-    return siteData.projects.filter((project) => project.tags.includes(selectedTag))
-  }, [selectedTag])
-
   return (
     <div>
       <Section className="pt-36 md:pt-44">
@@ -35,36 +19,10 @@ export function Projects() {
           </p>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.2} className="mt-10">
-          <div className="flex flex-wrap gap-2">
-            <Chip as="button" variant={selectedTag === null ? 'selected' : 'default'} onClick={() => setSelectedTag(null)}>
-              All
-            </Chip>
-            {allTags.map((tag) => (
-              <Chip
-                key={tag}
-                as="button"
-                variant={selectedTag === tag ? 'selected' : 'default'}
-                onClick={() => setSelectedTag(tag)}
-              >
-                {tag}
-              </Chip>
-            ))}
-          </div>
-        </ScrollReveal>
-
         <div className="mt-14">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedTag || 'all'}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-            >
-              <StaggerContainer className="grid md:grid-cols-2 gap-6 lg:gap-8">
-                <AnimatePresence>
-                  {filteredProjects.map((project, index) => (
+          <StaggerContainer className="grid md:grid-cols-2 gap-6 lg:gap-8">
+            <AnimatePresence>
+              {siteData.projects.map((project, index) => (
                     <motion.div
                       key={project.id}
                       layout
@@ -102,8 +60,6 @@ export function Projects() {
                   ))}
                 </AnimatePresence>
               </StaggerContainer>
-            </motion.div>
-          </AnimatePresence>
         </div>
       </Section>
     </div>
