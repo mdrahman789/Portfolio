@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { BookOpen, BookMarked, GraduationCap } from 'lucide-react'
 import { Section } from '@/components/ui/Section'
 import { ScrollReveal } from '@/components/motion/ScrollReveal'
+import { siteData } from '@/content/siteData'
 
 const quickFacts = [
   { label: 'Major', value: 'Computer Science', icon: BookOpen, accent: 'indigo' },
@@ -24,6 +25,16 @@ const favoritesBullets = [
   'Camera in hand whenever I can',
 ]
 
+const aiAndDataTools = [
+  'ChatGPT',
+  'Claude',
+  'Gemini',
+  'GitHub Copilot',
+  'Perplexity AI',
+  'Cursor AI',
+  'Stata',
+]
+
 const miniCardAccent: Record<string, string> = {
   indigo: 'border-t-2 border-t-indigo-400/60 bg-indigo-50/50 dark:bg-indigo-950/20',
   emerald: 'border-t-2 border-t-emerald-400/60 bg-emerald-50/50 dark:bg-emerald-950/20',
@@ -36,6 +47,7 @@ const cardAccent: Record<string, string> = {
   rose: 'border-t-4 border-t-rose-500',
   amber: 'border-t-4 border-t-amber-500',
   sky: 'border-t-4 border-t-sky-500',
+  teal: 'border-t-4 border-t-teal-500',
   violet: 'border-t-4 border-t-violet-500',
 }
 
@@ -45,6 +57,7 @@ const pillClasses: Record<string, string> = {
   rose: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300',
   amber: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
   sky: 'bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300',
+  teal: 'bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300',
   violet: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
 }
 
@@ -140,7 +153,79 @@ export function About() {
           </article>
         </section>
 
-        {/* 5) Life */}
+        {/* 5) Tech I use */}
+        <section>
+          <article className={`${cardBase} ${cardAccent.teal}`}>
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${pillClasses.teal}`}>Tech</span>
+              <h2 className="font-display text-display-md font-semibold text-slate-900 dark:text-white">
+                Tech I use
+              </h2>
+            </div>
+            <p className="text-body text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+              These are the tools I use most often when building and shipping projects.
+            </p>
+            <div className="space-y-6">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Languages</p>
+                <div className="flex flex-wrap gap-2">
+                  {siteData.skills.programming.map((item) => (
+                    <span
+                      key={item}
+                      className="inline-flex items-center rounded-full border px-3 py-1 text-sm bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Frameworks / Libraries</p>
+                <div className="flex flex-wrap gap-2">
+                  {siteData.skills.frameworks.map((item) => (
+                    <span
+                      key={item}
+                      className="inline-flex items-center rounded-full border px-3 py-1 text-sm bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Tools / Platforms</p>
+                <div className="flex flex-wrap gap-2">
+                  {siteData.skills.tools.map((item) => (
+                    <span
+                      key={item}
+                      className="inline-flex items-center rounded-full border px-3 py-1 text-sm bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">AI & Data Tools</p>
+                <p className="text-body text-slate-600 dark:text-slate-400 leading-relaxed mb-2">
+                  I use AI tools to learn faster, debug more effectively, and think through problems—not to replace understanding, but to support it.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {aiAndDataTools.map((item) => (
+                    <span
+                      key={item}
+                      className="inline-flex items-center rounded-full border px-3 py-1 text-sm bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        {/* 6) Life */}
         <section>
           <article className={`${cardBase} ${cardAccent.rose}`}>
             <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -160,7 +245,7 @@ export function About() {
           </article>
         </section>
 
-        {/* 6) Snapshot — 2-card grid */}
+        {/* 7) Snapshot — 2-card grid */}
         <section>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <article className={`${cardBase} ${cardAccent.amber}`}>
@@ -199,7 +284,7 @@ export function About() {
           </div>
         </section>
 
-        {/* 7) Open to Opportunities */}
+        {/* 8) Open to Opportunities */}
         <section className="mb-0">
           <article className={`${cardBase} ${cardAccent.violet}`}>
             <div className="flex flex-wrap items-center gap-2 mb-4">
