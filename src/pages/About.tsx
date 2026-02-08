@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { BookOpen, BookMarked, GraduationCap } from 'lucide-react'
+import { Section } from '@/components/ui/Section'
+import { ScrollReveal } from '@/components/motion/ScrollReveal'
 
 const quickFacts = [
   { label: 'Major', value: 'Computer Science', icon: BookOpen, accent: 'indigo' },
@@ -47,21 +49,24 @@ const pillClasses: Record<string, string> = {
 }
 
 const cardBase =
-  'rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/80 backdrop-blur dark:bg-slate-900/60 shadow-sm hover:shadow-md transition-shadow px-6 py-5'
+  'rounded-2xl border border-[var(--color-border)] bg-white dark:bg-[var(--color-bg-elevated)] shadow-soft dark:shadow-dark-soft hover:shadow-md transition-shadow px-6 py-5'
 
 export function About() {
   return (
-    <div className="bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900 pt-36 md:pt-44">
-      <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col gap-8">
-        {/* 1) Header */}
-        <header>
-          <h1 className="font-display text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
-            About Me
-          </h1>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Curious by nature. Calm by default. Always building.
-          </p>
-        </header>
+    <div>
+      <Section className="pt-36 md:pt-44">
+        <div className="flex flex-col gap-8">
+          {/* 1) Header */}
+          <header>
+            <ScrollReveal>
+              <h1 className="font-display text-display-xl md:text-display-2xl font-bold mb-4 text-slate-900 dark:text-white tracking-tight">
+                About Me
+              </h1>
+              <p className="text-body-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                Curious by nature. Calm by default. Always building.
+              </p>
+            </ScrollReveal>
+          </header>
 
         {/* 2) Quick Facts */}
         <section>
@@ -97,11 +102,11 @@ export function About() {
           <article className={`${cardBase} ${cardAccent.indigo}`}>
             <div className="flex flex-wrap items-center gap-2 mb-4">
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${pillClasses.indigo}`}>Story</span>
-              <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">
+              <h2 className="font-display text-display-md font-semibold text-slate-900 dark:text-white">
                 How I found my way here
               </h2>
             </div>
-            <div className="text-slate-600 dark:text-slate-300 leading-relaxed space-y-4">
+            <div className="text-body text-slate-600 dark:text-slate-400 leading-relaxed space-y-4">
               <p>
                 I started college as a pre-med student because I was drawn to people and wanted to understand life in a meaningful way. At the time, medicine felt like the most direct path to doing something that mattered.
               </p>
@@ -120,11 +125,11 @@ export function About() {
           <article className={`${cardBase} ${cardAccent.emerald}`}>
             <div className="flex flex-wrap items-center gap-2 mb-4">
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${pillClasses.emerald}`}>Mindset</span>
-              <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">
+              <h2 className="font-display text-display-md font-semibold text-slate-900 dark:text-white">
                 How I approach work and learning
               </h2>
             </div>
-            <div className="text-slate-600 dark:text-slate-300 leading-relaxed space-y-4">
+            <div className="text-body text-slate-600 dark:text-slate-400 leading-relaxed space-y-4">
               <p>
                 I&apos;m not someone who rushes through problems. I like to understand the why before writing the how. When something breaks, I want to know what caused it and fix it properly instead of applying a quick patch.
               </p>
@@ -140,11 +145,11 @@ export function About() {
           <article className={`${cardBase} ${cardAccent.rose}`}>
             <div className="flex flex-wrap items-center gap-2 mb-4">
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${pillClasses.rose}`}>Life</span>
-              <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">
+              <h2 className="font-display text-display-md font-semibold text-slate-900 dark:text-white">
                 The role nature and curiosity play in my life
               </h2>
             </div>
-            <div className="text-slate-600 dark:text-slate-300 leading-relaxed space-y-4">
+            <div className="text-body text-slate-600 dark:text-slate-400 leading-relaxed space-y-4">
               <p>
                 Spending time outdoors helps me reset. Hiking gives me space to think without distractions, and photography helps me slow down and notice details I&apos;d otherwise miss.
               </p>
@@ -161,11 +166,11 @@ export function About() {
             <article className={`${cardBase} ${cardAccent.amber}`}>
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${pillClasses.amber}`}>Work</span>
-                <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">
+                <h2 className="font-display text-display-md font-semibold text-slate-900 dark:text-white">
                   What working with me feels like
                 </h2>
               </div>
-              <ul className="space-y-2 text-slate-600 dark:text-slate-300 leading-relaxed">
+              <ul className="space-y-2 text-body text-slate-600 dark:text-slate-400 leading-relaxed">
                 {workingWithMeBullets.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <span className="text-slate-400 dark:text-slate-500 mt-0.5">•</span>
@@ -178,11 +183,11 @@ export function About() {
             <article className={`${cardBase} ${cardAccent.sky}`}>
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${pillClasses.sky}`}>Fun</span>
-                <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">
+                <h2 className="font-display text-display-md font-semibold text-slate-900 dark:text-white">
                   Favorites & fun
                 </h2>
               </div>
-              <ul className="space-y-2 text-slate-600 dark:text-slate-300 leading-relaxed">
+              <ul className="space-y-2 text-body text-slate-600 dark:text-slate-400 leading-relaxed">
                 {favoritesBullets.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <span className="text-slate-400 dark:text-slate-500 mt-0.5">•</span>
@@ -199,11 +204,11 @@ export function About() {
           <article className={`${cardBase} ${cardAccent.violet}`}>
             <div className="flex flex-wrap items-center gap-2 mb-4">
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${pillClasses.violet}`}>Next</span>
-              <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">
+              <h2 className="font-display text-display-md font-semibold text-slate-900 dark:text-white">
                 Open to Opportunities
               </h2>
             </div>
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-body text-slate-600 dark:text-slate-400 leading-relaxed">
               I&apos;m still figuring things out, but I&apos;m intentional about where I&apos;m going. I want to build technology that feels human, useful, and thoughtfully designed — and I&apos;m excited to keep learning through work that challenges me in the right ways. If you&apos;d like to connect, feel free to reach out through my{' '}
               <Link
                 to="/contact"
@@ -215,7 +220,8 @@ export function About() {
             </p>
           </article>
         </section>
-      </div>
+        </div>
+      </Section>
     </div>
   )
 }
